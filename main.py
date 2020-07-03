@@ -18,21 +18,21 @@ class Item(BaseModel):
 
 
 @app.get("/users")
-def read_users(name: str = None,
-               email: str = None,
-               age: int = None,
-               company: str = None,
-               join_date: str = None,
-               job_title: str = None,
-               gender: str = None,
-               salary: int = None):
+async def read_users(name: str = None,
+                     email: str = None,
+                     age: int = None,
+                     company: str = None,
+                     join_date: str = None,
+                     job_title: str = None,
+                     gender: str = None,
+                     salary: int = None):
     us = Users()
-    user = us.get(name=name,
-                  email=email,
-                  age=age,
-                  company=company,
-                  join_date=join_date,
-                  job_title=job_title,
-                  gender=gender,
-                  salary=salary)
-    return user  # , len(user)
+    user = await us.get(name=name,
+                        email=email,
+                        age=age,
+                        company=company,
+                        join_date=join_date,
+                        job_title=job_title,
+                        gender=gender,
+                        salary=salary)
+    return user
